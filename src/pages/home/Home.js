@@ -6,11 +6,11 @@ export const Home = () => {
 
   useEffect(() => {
     (async () => {
-      try{
-        const {results} = await nowPlaying();
+      try {
+        const { results } = await nowPlaying();
         setNowData(results);
-      }catch(error){
-        console.log(error)
+      } catch (error) {
+        console.log(error);
       }
     })();
   }, []);
