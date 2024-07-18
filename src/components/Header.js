@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { routes } from "../routes";
 import styled from "styled-components";
-import { colors } from "../GlobalStyled";
+import { colors, spacing } from "../GlobalStyled";
 
 const Container = styled.div`
   padding: 20px 100px;
@@ -11,7 +11,12 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
   width: 100%;
+
+  @media screen and (max-width: 768px) {
+    padding: 20px ${spacing.moSize};
+  }
 `;
 
 const Logo = styled.div`
@@ -28,6 +33,12 @@ const Menu = styled.div`
   display: flex;
   li {
     margin-left: 150px;
+  }
+
+  @media screen and (max-width: 768px) {
+    li {
+      margin-left: 50px;
+    }
   }
 `;
 

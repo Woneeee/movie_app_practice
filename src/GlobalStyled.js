@@ -5,8 +5,14 @@ export const colors = {
   point: "crimson",
 };
 
+export const spacing = {
+  size: "100px",
+  moSize: "20px",
+};
+
 export const GlobalStyled = createGlobalStyle`
     ${reset}
+
 
     *{
         box-sizing: border-box;
@@ -18,6 +24,7 @@ export const GlobalStyled = createGlobalStyle`
         background-color: #1d1d1d;
         color: white;
         letter-spacing: -1px;
+        word-break: keep-all; // 알아서 본문 단어 안끊기게 계산해서 보여줌
     }
     /* body 에는 기본값 */
 
