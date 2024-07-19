@@ -13,10 +13,8 @@ export const spacing = {
 export const GlobalStyled = createGlobalStyle`
     ${reset}
 
-
     *{
         box-sizing: border-box;
-        
     }
 
     body{
@@ -35,5 +33,10 @@ export const GlobalStyled = createGlobalStyle`
 
     li{
         list-style: none;
+    }
+
+    img{
+        width: 100%;
+        display: block;   
     }
 `;
