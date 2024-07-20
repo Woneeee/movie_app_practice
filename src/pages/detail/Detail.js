@@ -4,6 +4,7 @@ import {Loading} from "../../components/Loading"
 import { Title } from "../../components/Title";
 import styled from "styled-components";
 import {ORIGIN_URL} from "../../constant/imgUrl"
+import { useParams } from "react-router-dom";
 
 const Container =styled.div`
   padding: 150px 20%;
@@ -60,11 +61,13 @@ const Desc =styled.div`
 export const Detail = () => {
   const [detail, setDetail] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const {id: movieId} = useParams();
+  // console.log(movieId)
 
   useEffect(() => {
     (async() => {
       try{
-        const data = await movieDetail(1022789);
+        const data = await movieDetail(movieId);
 
         setDetail(data)
         setIsLoading(false)
@@ -74,8 +77,8 @@ export const Detail = () => {
     })()
   }, [])
 
-  console.log(detail)
-  console.log(isLoading)
+  // console.log(detail)
+  // console.log(isLoading)
 
   return <>
     <Title titleName='DETAIL' />
