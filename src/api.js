@@ -25,3 +25,5 @@ export const topRated = () =>
 
 export const upcoming = () =>
   fetch(url("movie/upcoming"), options).then((res) => res.json());
+
+export const movieDetail = (movie_id) => fetch(url(`movie/${movie_id}`), options).then((res) => res.json())

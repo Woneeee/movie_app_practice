@@ -34,6 +34,7 @@ const params = {
 
 const MovieTitle = styled.div`
   font-size: 18px;
+  margin-top: 10px;
 `;
 
 export const Movies = ({ title, movieData }) => {
