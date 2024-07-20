@@ -35,6 +35,7 @@ const Info =styled.div`
     background-color: #333;
     padding: 10px 20px;
   }
+  display: flex;
 `;
 
 const Genres =styled.ul`
