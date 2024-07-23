@@ -26,5 +26,10 @@ export const topRated = () =>
 export const upcoming = () =>
   fetch(url("movie/upcoming"), options).then((res) => res.json());
 
-export const detail = ({ movie_id }) =>
+export const movieDetail = (movie_id) =>
   fetch(url(`movie/${movie_id}`), options).then((res) => res.json());
+
+export const movieSearch = (keyword) => {
+  const searchUrl = baseUrl + `search/movie?query=${keyword}&language=ko-kr`;
+  return fetch(searchUrl, options).then((res) => res.json());
+};

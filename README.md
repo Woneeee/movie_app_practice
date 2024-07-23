@@ -20,6 +20,6 @@
 - [x] styled-reset
 - [x] swiper
 - [ ] font-awesome
-- [ ] react-hook-form
+- [x] react-hook-form
 - [x] helmet-async
-- [ ] react-icons
+- [x] react-icons
