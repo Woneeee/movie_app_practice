@@ -4,6 +4,7 @@ import { Loading } from "../../components/Loading";
 import { Movies } from "./components/Movies";
 import { MainBanner } from "./components/MainBanner";
 import "swiper/css";
+import { Title } from "../../components/Title";
 
 export const Home = () => {
   const [nowData, setNowData] = useState();
@@ -39,6 +40,7 @@ export const Home = () => {
 
   return (
     <>
+      <Title titleName="HOME" />
       {isLoading ? (
         <Loading />
       ) : (
