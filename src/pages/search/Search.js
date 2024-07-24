@@ -4,6 +4,10 @@ import styled from "styled-components";
 import { spacing } from "../../GlobalStyled";
 import { FaSearch } from "react-icons/fa";
 import { movieSearch } from "../../api";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { W500_URL } from "../../constant/imgUrl";
+import { Loading } from "../../components/Loading";
 
 const Container = styled.div`
   padding: 150px ${spacing.size};
@@ -33,13 +37,36 @@ const Form = styled.form`
   }
 `;
 
-const ErrorMesaage = styled.div`
+const ErrorMessage = styled.div`
   color: gold;
   font-size: 18px;
   margin-top: 30px;
+  margin-bottom: 30px;
+`;
+
+const ConWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 30px; /* 행끼리의 갭*/
+  column-gap: 15px;
+`;
+// *grid-template-columns
+// =>repeat(반복횟수, 반복값) / repeat(5, 1fr)은 1fr 1fr 1fr 1fr 1fr과 같음
+// =>fr은 fraction(뜻은 비율)인데요, 숫자 비율대로 트랙의 크기를 나눔
+// =>즉 1fr 1fr 1fr 1fr 1fr은 균일하게 1:1:1:1:1 비율인 5개의 column을 만들겠다는 의미
+
+const Bg = styled.div`
+  height: 500px;
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const Search = () => {
+  const [searchData, setSearchData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -50,11 +77,13 @@ export const Search = () => {
     const { keyword } = data;
     // console.log(keyword);
 
-    const result = await movieSearch(keyword);
-    console.log(result);
+    const { results } = await movieSearch(keyword);
+    setSearchData(results);
+    setIsLoading(false);
   };
 
   // console.log(errors);
+  // console.log(searchData);
 
   return (
     <Container>
@@ -72,8 +101,35 @@ export const Search = () => {
           <FaSearch />
         </button>
 
-        <ErrorMesaage>{errors?.keyword?.message}</ErrorMesaage>
+        <ErrorMessage>{errors?.keyword?.message}</ErrorMessage>
       </Form>
+
+      {searchData?.length === 0 ? (
+        "검색 결과가 없습니다 😢"
+      ) : (
+        <>
+          {searchData && (
+            <>
+              {isLoading ? (
+                <Loading />
+              ) : (
+                <ConWrap>
+                  {searchData.map((data) => (
+                    <Link key={data.title} to={`/detail/${data.id}`}>
+                      <Bg>
+                        <img
+                          src={W500_URL + data.poster_path}
+                          alt={data.title}
+                        />
+                      </Bg>
+                    </Link>
+                  ))}
+                </ConWrap>
+              )}
+            </>
+          )}
+        </>
+      )}
     </Container>
   );
 };
