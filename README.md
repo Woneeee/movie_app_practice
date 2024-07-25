@@ -19,7 +19,7 @@
 - [x] styled-components
 - [x] styled-reset
 - [x] swiper
-- [ ] font-awesome
+- [x] font-awesome
 - [x] react-hook-form
 - [x] helmet-async
 - [x] react-icons
